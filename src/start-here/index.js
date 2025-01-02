@@ -27,6 +27,10 @@ function buildServer(config) {
     options: opts,
   })
 
+  fastify.register(import('@fastify/postgres'), {
+    connectionString: opts.PG_CONNECTION_STRING,
+  })
+  
   fastify.log.info('Fastify is starting up!')
 
   return fastify
